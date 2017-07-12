@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+require "colorize"
+
 lib = "/usr/local/etc/cmd/lib.cmd"
 system "mkdir -p /usr/local/etc/cmd/"
 
@@ -7,6 +9,7 @@ $options = ARGV.select { |a| /^[\-]/ =~ a }
 $values  = ARGV.select { |a| /^[^\-]/ =~ a }
 
 def forge_command(lib)
+  args = ARGV[1..-1]
   unless File.exist?(lib)
     abort "you need to add file"
   end
@@ -14,7 +17,11 @@ def forge_command(lib)
     .select { |line| /^[\w]+=[\w]+$/ }
     .map    { |line| line.split("=").map { |x| x.strip }}
     .flatten
-  Hash[*lines][$values[0]]
+  command = Hash[*lines][$values[0]]
+  command += " " +  args.join(" ")
+
+  puts "#{command}".cyan
+  command
 end
 
 
