@@ -28,7 +28,7 @@ end
 case $options.first
 when "-h"
   puts
-  puts "cmd -a ... add command"
+  puts "cmd -a                  ... add command"
   puts "cmd -a [key] [commands] ... add command"
   puts "cmd -l                  ... list command"
   puts "cmd -cp [key]           ... add command to the clipboard"
