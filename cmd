@@ -30,10 +30,11 @@ when "-h"
   puts
   puts "cmd -a ... add command"
   puts "cmd -a [key] [commands] ... add command"
-  puts "cmd -l  ... list command"
-  puts "cmd -cp ... add command to the clipboard"
-  puts "cmd -dr ... dry run command"
-  puts "cmd [key] ... execute command"
+  puts "cmd -l                  ... list command"
+  puts "cmd -cp [key]           ... add command to the clipboard"
+  puts "cmd -dr [key]           ... dry run command"
+  puts "cmd [key]               ... execute command"
+  puts "cmd [key] [args...]     ... execute command with additional args"
 when "-a"
   if $values.size > 0 
     f = File.open(lib, "a")
